@@ -13,9 +13,13 @@ jobs:
               with:
                 python-version: '3.12'
                 architecture: 'x64'
+            - name: Create virtualenv
+              run: python3 -m venv venv
+            - name: Activate virtualenv
+              run: |
+                . .venv/bin/activate
+                echo PATH=$PATH >> $GITHUB_ENV
             - name: Install requirements
               run: pip install -r requirements.txt
-            - name: Run tests
-              run: coverage run start.py
-            - name: Tests report
-              run: coverage report
+            - name: Run test
+              run: python3 start.py
