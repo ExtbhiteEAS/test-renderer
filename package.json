@@ -1,0 +1,6 @@
+{
+    "settingsData": {
+        "venv_activate": "./venv/Scripts/activate",
+        "requirements": "./requirements.txt"
+    }
+}
