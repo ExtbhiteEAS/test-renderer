@@ -13,13 +13,23 @@ jobs:
               with:
                 python-version: '3.12'
                 architecture: 'x64'
+
             - name: Create virtualenv
               run: python3 -m venv venv
+
             - name: Activate virtualenv
               run: |
                 . venv/bin/activate
                 echo PATH=$PATH >> $GITHUB_ENV
+
             - name: Install requirements
               run: pip install -r requirements.txt
+
             - name: Run test
               run: python3 tests.py
+            
+            - name: Deploy to Github Pages
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./package
