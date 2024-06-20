@@ -11,5 +11,7 @@ configure = {
         'author': __author__,
         'version': __version__
     },
-    'extras': []
+    'extras': [
+        {'./dist/lib/test.py'}
+    ]
 }
