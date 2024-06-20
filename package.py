@@ -46,3 +46,6 @@ code = f'''manifest = {{
 }}'''
 with open('./package/renderer.py', 'a+', encoding = 'utf-8') as package_make:
     package_make.write(code)
+    
+with open('./package/README.md', 'a+', encoding = 'utf-8') as readme:
+    readme.write('# Renderer\n- ???')
