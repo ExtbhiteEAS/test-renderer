@@ -17,7 +17,7 @@ jobs:
               run: python3 -m venv venv
             - name: Activate virtualenv
               run: |
-                . .venv/bin/activate
+                . venv/bin/activate
                 echo PATH=$PATH >> $GITHUB_ENV
             - name: Install requirements
               run: pip install -r requirements.txt
