@@ -27,7 +27,7 @@ try:
 
                         extras_data.append({
                             'path': f'{path_extra}',
-                            'code': f'{buffer_extra_data}'
+                            'code': buffer_extra_data
                         })
                         logprint.info(f'Encoded {path_extra}')
                 else:
@@ -41,8 +41,8 @@ except Exception as e:
 logprint.info('Writing encoded data')
 os.system('mkdir package')
 code = f'''manifest = {{
-    "source_code": {buffer_data},
-    "extras": {extras_data}
+    'source_code': {buffer_data},
+    'extras': {extras_data}
 }}'''
 with open('./package/renderer.py', 'a+', encoding = 'utf-8') as package_make:
     package_make.write(code)
