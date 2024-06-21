@@ -1,5 +1,5 @@
-__renderer_name__ = 'Name'
-__renderer_id__ = 'name'
+__renderer_name__ = 'Your renderer'
+__renderer_id__ = 'test_renderer_id'
 __author__ = 'You'
 __version__ = '1.0'
 

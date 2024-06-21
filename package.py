@@ -34,18 +34,26 @@ try:
                     logprint.error(f'Extra path {path_extra} is not found and not exists')
     else:
         logprint.info('Extras not found, skipping...')
-        extras_data = '\'no_extras_found\''
-except Exception as e:
-    logprint.error(f'Error while packaging renderer: {e}')
+        extras_data = 'no_extras_found'
+        
+    logprint.info('Writing encoded data')
+    os.system('mkdir package')
     
-logprint.info('Writing encoded data')
-os.system('mkdir package')
-code = f'''manifest = {{
+    code = f'''manifest = {{
+    'info': {{'name': '{configure['renderer_data']['renderer_name']}', 'id': '{configure['renderer_data']['renderer_id']}', 'author': '{configure['renderer_data']['author']}', 'version': '{configure['renderer_data']['version']}'}},
     'source_code': {buffer_data},
     'extras': {extras_data}
 }}'''
-with open('./package/renderer.py', 'a+', encoding = 'utf-8') as package_make:
-    package_make.write(code)
     
-with open('./package/README.md', 'a+', encoding = 'utf-8') as readme:
-    readme.write('# Renderer\n- ???')
+    with open('./package/renderer.py', 'a+', encoding = 'utf-8') as package_make:
+        package_make.write(code)
+        logprint.info('\'./package/renderer.py\' was saved')
+        
+    with open('./package/README.md', 'a+', encoding = 'utf-8') as readme:
+        readme.write('# Renderer\n- ???')
+        logprint.info('\'./package/README.md\' was saved')
+        
+    logprint.info('Wrote encoded data and wrote manifest data')
+        
+except Exception as e:
+    logprint.error(f'Error while packaging renderer: {e}')
