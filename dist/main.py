@@ -5,4 +5,4 @@ def main_function():
     logprint.debug(f'{test.function()} | To see full tutorial of that, check: <link>')
     
 def setup():
-    return main_function()
+    return exec('main_function()')

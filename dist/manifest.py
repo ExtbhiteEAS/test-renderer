@@ -12,6 +12,6 @@ configure = {
         'version': __version__
     },
     'extras': [
-        {'./dist/lib/test.py'}
+        {'dist/lib/test.py'}
     ]
 }

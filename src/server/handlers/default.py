@@ -51,7 +51,7 @@ class DefaultRoutes:
             logprint.debug(f'buffer_data: {buffer_data} | extras: {extras_data} | manifest: {configure}')
             
             return json_response({
-                'message': f'{setup}',
+                'message': f'http://server:4444/api/v1/renderer/setup',
                 'manifest': {
                     'renderer': {
                         'name': configure['renderer_data']['renderer_name'],
@@ -68,3 +68,7 @@ class DefaultRoutes:
         except Exception as e:
             logprint.error(f'Got error while generated renderer data: {e}')
             return json_response({'message': 'While generated renderer data script got error. Check your server console to see error.'})
+        
+    @routes.get('/api/v1/renderer/setup')
+    async def api_renderer_setup(request: Request):
+        return json_response({'object': f'{setup()}'})
